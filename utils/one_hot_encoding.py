@@ -1,27 +1,22 @@
 # Author: Sung-Wook Park
 # Date: 20 Jun 2022
-# Last updated: 18 Sep 2023
+# Last updated: 08 Jul 2026
 # --- Ad hoc ---
 
 import argparse
 import numpy as np
-
 from PIL import Image
 from tqdm import tqdm
-
 def read_image(path):
     image = np.array(Image.open(path))
     return image.reshape(image.shape[0], image.shape[1], 1)
-
 def onehot_encode_label(unique_label_list, label_list, index):
     onehot_label = unique_label_list == label_list[index]
     onehot_label = onehot_label.astype(np.uint8)
     return onehot_label
-
 def main(config):
     train_img_list = []
     train_label_list = []
-
     with open('trainval.txt', 'r') as f:
         while True:
             line = f.readline()
@@ -32,7 +27,6 @@ def main(config):
             
     unique_label_list = np.unique(train_label_list)
     nb_classes = len(unique_label_list)
-
     x_train = np.zeros((len(train_img_list), config.size, config.size, config.channel), dtype='float32')
     y_train = np.zeros((len(train_img_list), nb_classes), dtype='uint8')
     
@@ -44,7 +38,6 @@ def main(config):
         
     test_img_list = []
     test_label_list = []
-
     with open('test.txt', 'r') as f:
         while True:
             line = f.readline()
@@ -63,13 +56,11 @@ def main(config):
     
     xy = (x_train, y_train), (x_test, y_test)
     np.save('clamm.npy', xy)
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Image to Batch')
     
     parser.add_argument('--dataset', type=str, required=True, help='Dataset Path')
     parser.add_argument('--size', type=int, default='28', help='Choose Image Size')
     parser.add_argument('--channel', type=int, default='1', help='Choose Image Channel')
-
     config = parser.parse_args()
     main(config)
