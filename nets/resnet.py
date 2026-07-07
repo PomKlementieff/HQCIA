@@ -1,12 +1,10 @@
 # Author: Sung-Wook Park
 # Date: 16 Jun 2022
-# Last updated: 18 Sep 2023
+# Last updated: 08 Jul 2026
 # --- Ad hoc ---
 
 import tensorflow as tf
-
 from quantum_layer import QConv
-
 def Resnet(img_shape, units, num_classes):
     inputs = tf.keras.Input(shape=img_shape)
     x = QConv(filter_size=2, depth=8, activation='relu', name='qconv1')(inputs)
@@ -25,5 +23,4 @@ def Resnet(img_shape, units, num_classes):
                        loss='sparse_categorical_crossentropy',
                        metrics=['accuracy'])
     qcnn_model.summary()
-
     return qcnn_model
