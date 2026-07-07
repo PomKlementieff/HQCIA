@@ -12,7 +12,7 @@ python qcnn.py --batch_size 32 --dataset fmnist --epochs 30
 ```
 
 # Experimental Results
-- We evaluated the performance of HQCIA against three models: Fully Connected (FC), Convolutional Neural Network (CNN), and Quantum Convolutional Neural Network (QCNN).
+- We evaluated the performance of HQCIA against two classical networks—Fully Connected (FC) and Convolutional Neural Network (CNN)—and the baseline Quantum Convolutional Neural Network (QCNN).
 
 
 - The algorithms are implemented as individual functions within the 'nets' folder.
