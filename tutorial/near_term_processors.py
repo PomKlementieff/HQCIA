@@ -1,6 +1,6 @@
 # Author: Sung-Wook Park
 # Date: 16 Jun 2022
-# Last updated: 18 Sep 2023
+# Last updated: 08 Jul 2026
 # --- Ad hoc ---
 
 import argparse
@@ -27,7 +27,7 @@ class CircuitLayerBuilder():
             symbol = sympy.Symbol(prefix + '-' + str(i))
             circuit.append(gate(qubit, self.readout)**symbol)
 
-# dunction for filter data number 3 dan number 6 
+# function for filtering data of number 3 and number 6
 def filter_36(x, y):
     keep = (y == 3) | (y == 6)
     x, y = x[keep], y[keep]
