@@ -2,6 +2,7 @@
 # Date: 16 Jun 2022
 # Last updated: 08 Jul 2026
 # --- Ad hoc ---
+
 import tensorflow as tf
 from quantum_layer import QConv
 def Naive(img_shape, units, num_classes):
