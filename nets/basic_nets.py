@@ -1,12 +1,9 @@
 # Author: Sung-Wook Park
 # Date: 16 Jun 2022
-# Last updated: 18 Sep 2023
+# Last updated: 08 Jul 2026
 # --- Ad hoc ---
-
 import tensorflow as tf
-
 from quantum_layer import QConv
-
 def FC(img_shape, units, num_classes):
     fc_model = tf.keras.models.Sequential()
     fc_model.add(tf.keras.layers.Flatten(input_shape=img_shape))
@@ -16,9 +13,7 @@ def FC(img_shape, units, num_classes):
                      loss='sparse_categorical_crossentropy',
                      metrics=['accuracy'])
     fc_model.summary()
-
     return fc_model
-
 def CNN(img_shape, units, num_classes):
     cnn_model = tf.keras.models.Sequential()
     cnn_model.add(tf.keras.layers.Conv2D(8, (2, 2), activation='relu', name='conv1', input_shape=img_shape))
@@ -29,9 +24,7 @@ def CNN(img_shape, units, num_classes):
                       loss='sparse_categorical_crossentropy',
                       metrics=['accuracy'])
     cnn_model.summary()
-
     return cnn_model
-
 def QCNN(img_shape, units, num_classes):
     qcnn_model = tf.keras.models.Sequential()
     qcnn_model.add(QConv(filter_size=2, depth=8, activation='relu', name='qconv1', input_shape=img_shape))
@@ -42,5 +35,4 @@ def QCNN(img_shape, units, num_classes):
                        loss='sparse_categorical_crossentropy',
                        metrics=['accuracy'])
     qcnn_model.summary()
-
     return qcnn_model
