@@ -1,6 +1,6 @@
 # Author: Sung-Wook Park
 # Date: 16 Jun 2022
-# Last updated: 18 Sep 2023
+# Last updated: 08 Jul 2026
 # --- Ad hoc ---
 
 import argparse
@@ -270,7 +270,7 @@ def main(config):
 
     save_model(model=cnn_model, filepath='CNN_{}.h5'.format(config.dataset), overwrite=True, include_optimizer=True)
     
-    # Vainilla Quantum Convolutional Neural Network
+    # Vanilla Quantum Convolutional Neural Network
     qcnn_model = QCNN(IMG_SHAPE,UNITS,NUM_CLASSES)
     qcnn_history = qcnn_model.fit(x_train,
                                   y_train,
@@ -293,7 +293,7 @@ def main(config):
     write_QCNN_acc = pd.DataFrame(qcnn_history.history['val_accuracy'], columns=['QCNN'])
     write_QCNN_acc.to_csv('QCNN_acc({}).csv'.format(config.dataset), index=False)
 
-    # Quantum Inception Network - Naive
+    # HQCIA - Naive
     naive_model = Naive(IMG_SHAPE,UNITS,NUM_CLASSES)
     naive_history = naive_model.fit(x_train,
                                     y_train,
@@ -316,7 +316,7 @@ def main(config):
     write_Naive_acc = pd.DataFrame(naive_history.history['val_accuracy'], columns=['Naive'])
     write_Naive_acc.to_csv('Naive_acc({}).csv'.format(config.dataset), index=False)
 
-    # Quantum Inception Network - Dimension_Reductions
+    # HQCIA - Dimension_Reductions
     dr_model = Dimension_Reductions(IMG_SHAPE,UNITS,NUM_CLASSES)
     dr_history = dr_model.fit(x_train,
                               y_train,
